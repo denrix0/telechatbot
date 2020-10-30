@@ -1,9 +1,13 @@
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telechatbot.src.chatbot import Bot
 
 updater = Updater(token='1326282241:AAEpl67goNnBEj5rLaZ1olEXyUotKPxD66c')
 dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
+
+bot = Bot()
+bot.train()
 
 
 def start(update, context):
@@ -11,7 +15,8 @@ def start(update, context):
 
 
 def echo(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Sample text")
+    msg=str(bot.bot.get_response(update.message.text))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=msg if msg else "error")
 
 
 start_handler = CommandHandler('start', start)
