@@ -1,8 +1,8 @@
-import logging
+import logging, os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from telechatbot.src.chatbot import Bot
 
-updater = Updater(token='1326282241:AAEpl67goNnBEj5rLaZ1olEXyUotKPxD66c')
+updater = Updater(token=os.getenv("BOT_TOKEN"))
 dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
