@@ -1,2 +1,2 @@
-# telechatbot
+# covid-chatbot
 repo for chatbot
